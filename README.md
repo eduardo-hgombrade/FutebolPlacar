@@ -1,86 +1,132 @@
 # FutebolPlacar
-# Projeto RAD: Sistema de Análise de Dados de Futebol (ETL & Dashboards)
+# Sistema de Previsão de Resultados de Futebol
 
-Este projeto foi desenvolvido como parte da disciplina de **Desenvolvimento Rápido de Aplicações (RAD) em Python**. O objetivo é demonstrar a integração entre coleta de dados via API, persistência em banco de dados relacional e visualização analítica através de interface web e Business Intelligence.
-
----
-
-## Tema do Projeto
-
-**Análise de dados de uma API pública de Futebol (Placar, Ranking de times), integrada a um banco de dados e exibida em Power BI.**
-
-O sistema realiza o consumo de dados esportivos em tempo real, processa essas informações em um ambiente Python e as disponibiliza tanto em uma interface web simplificada quanto em um dashboard analítico avançado para suporte à decisão e análise de desempenho de clubes.
-
----
-
-## Justificativa do Tema
-
-A escolha do tema "Futebol" deve-se à alta disponibilidade de dados dinâmicos e à complexidade inerente à atualização constante de tabelas e placares, o que representa um excelente cenário para o uso de metodologias RAD. 
-
-**Finalidade e Benefícios:**
-* **Acadêmico:** Aplicar conceitos de consumo de APIs REST, manipulação de bancos de dados SQL e desenvolvimento de interfaces web rápidas.
-* **Portfólio:** Demonstra a capacidade do grupo de construir um pipeline de dados completo (ETL - Extração, Transformação e Carga).
-* **Mercado de Trabalho:** Simula um cenário real de engenharia de dados, onde informações brutas são transformadas em insights visuais para o usuário final.
+## 1. Identificação do Projeto
+* **Nome do Projeto:** Sistema de Previsão de Resultados de Futebol
+* **Responsável:** Eduardo
+* **Instituição:** Unimetrocamp Wyden
+* **Matéria:** Desenvolvimento Rápido de Aplicações em Python
+* **Professor:** Mauro Rodrigues Alves Nogueira
+* **Integrantes do Grupo:** Eduardo, Pedro, Vinícius, Rafael, Luana
+* **Versão do Documento:** 1.0
 
 ---
 
-## Objetivos do Projeto
+## 2. Descrição do Projeto
+O projeto consiste no desenvolvimento de um software capaz de calcular probabilidades de vitória entre dois clubes de futebol. A aplicação utiliza dados históricos provenientes de arquivos CSV contendo resultados de partidas da Premier League ao longo de várias temporadas.
 
-1.  **Integração de Dados:** Consumir dados de uma API pública e persistir as informações relevantes em um banco de dados relacional.
-2.  **Visualização Web:** Criar uma interface básica para consulta rápida de rankings e placares diretamente do banco de dados.
-3.  **Análise de BI:** Exportar os dados tratados para o Power BI para a criação de gráficos de desempenho e tendências.
-4.  **Automação:** Garantir que o fluxo entre a API e a interface seja fluido e de baixa manutenção.
+Com base nesses dados, é aplicado um modelo de cálculo que permite ao usuário selecionar dois times e obter uma previsão estatística de qual equipe possui maior probabilidade de vencer. Futuramente, o sistema integrará técnicas de Machine Learning para aprimorar a precisão das análises de forma automática.
 
 ---
 
-## Divisão de Tarefas
-
-A equipe distribuiu as responsabilidades de forma a cobrir todas as camadas da aplicação:
-
-* **Eduardo:** Responsável pela **modelagem do banco de dados** e a lógica de integração/persistência com Python.
-* **Pedro:** Responsável pelo **consumo da API pública** e scripts de tratamento de dados (limpeza e normalização).
-* **Vinícius:** Responsável pelo desenvolvimento da **interface web** utilizando Flask (HTML/CSS).
-* **Rafael:** Responsável pela **integração com Power BI**, extração de dados e criação dos dashboards analíticos.
-* **Luana:** Responsável pela **documentação técnica**, organização do repositório Git e revisão final do código.
+## 3. Objetivo Geral
+Desenvolver um sistema inteligente e funcional capaz de prever probabilidades de resultados de partidas de futebol com base em processamento de dados históricos e variáveis estatísticas.
 
 ---
 
-## Ambiente e Tecnologias
+## 4. Objetivos Específicos
+* Permitir a seleção de dois clubes para comparação direta.
+* Processar dados históricos de partidas extraídos de arquivos CSV.
+* Calcular probabilidades de vitória com base em métricas como gols e desempenho.
+* Exibir os resultados de forma clara e intuitiva ao usuário.
+* Integrar dados estatísticos como chutes e posse de bola.
+* Implementar modelos de Machine Learning para refinamento das previsões.
 
-* **Linguagem:** [Python 3.10+](https://www.python.org/)
-* **Framework Web:** [Flask](https://flask.palletsprojects.com/) (Back-end leve e rápido).
-* **Banco de Dados:** [SQLite](https://www.sqlite.org/index.html) (Embutido, dispensa instalação de servidor complexo).
-* **Front-end:** HTML5 e CSS3 (Opcionalmente utilizando Bootstrap para agilidade).
+---
+
+## 5. Justificativa
+A análise de dados esportivos é uma área em constante crescimento, sendo essencial para analistas e entusiastas. O sistema busca fornecer uma ferramenta automatizada que auxilie na previsão de resultados com base em dados reais, utilizando inteligência artificial para permitir o aprendizado contínuo conforme novos dados são inseridos.
+
+---
+
+## 6. Escopo do Projeto
+
+### 6.1 O que está incluído
+* Leitura e processamento de dados em formato CSV.
+* Interface web para seleção de times e exibição de resultados.
+* Algoritmo de cálculo de probabilidades e uso de estatísticas.
+* Implementação inicial de modelo de Machine Learning.
+* Sistema adaptável para inserção de novos dados.
+
+### 6.2 O que não está incluído
+* Previsões em tempo real com dados de partidas ao vivo.
+* Integração com sistemas de casas de apostas.
+* Cobertura de ligas mundiais além da Premier League nesta fase inicial.
+* Versão de aplicativo mobile (foco exclusivo em plataforma Web).
+
+---
+
+## 7. Entregas (Deliverables)
+* Sistema funcional (Aplicação Web).
+* Base de dados integrada via CSV.
+* Algoritmo de cálculo de probabilidade estruturado.
+* Interface de usuário (Front-end).
+* Documentação técnica do sistema.
+* Protótipo de modelo de Machine Learning.
+
+---
+
+## 8. Requisitos
+
+### 8.1 Requisitos Funcionais
+* O sistema deve permitir a seleção de dois clubes para o confronto.
+* O sistema deve calcular a probabilidade de vitória de cada equipe.
+* O sistema deve exibir os resultados na interface web.
+* O sistema deve carregar os dados a partir de arquivos CSV pré-definidos.
+
+### 8.2 Requisitos Não Funcionais
+* Interface de usuário simples e de fácil navegação.
+* Processamento rápido dos cálculos estatísticos.
+* Sistema confiável e com validação de dados de entrada.
+* Escalabilidade para suportar futuras ligas de futebol.
+
+---
+
+## 9. Stakeholders (Partes Interessadas)
+* Usuários finais (torcedores, estudantes e analistas).
+* Desenvolvedores do projeto.
+* Instituição de ensino Unimetrocamp Wyden.
+
+---
+
+## 10. Cronograma (Macro)
+
+| Etapa | Descrição |
+| :--- | :--- |
+| **Planejamento** | Definição do escopo e arquitetura do projeto. |
+| **Desenvolvimento** | Criação do backend, processamento CSV e interface. |
+| **Testes** | Validação das probabilidades e estabilidade do sistema. |
+| **Entrega** | Apresentação final e disponibilização da documentação. |
+
+---
+
+## 11. Restrições
+* Limitação de tempo para o desenvolvimento dentro do período letivo.
+* Conhecimento técnico da equipe em algoritmos preditivos avançados.
+* Dependência da disponibilidade e integridade dos dados contidos nos arquivos CSV.
+
+---
+
+## 12. Critérios de Aceitação
+* O sistema deve realizar os cálculos de probabilidade sem erros de execução.
+* A interface deve ser funcional e apresentar os resultados de forma legível.
+* O modelo de Machine Learning deve demonstrar capacidade de evolução na precisão.
+
+---
+
+## 13. Divisão de Tarefas
+* **Eduardo:** Modelagem do banco de dados SQLite e integração com Python.
+* **Pedro:** Processamento de arquivos CSV e lógica do cálculo de probabilidade.
+* **Vinícius:** Desenvolvimento da interface web (HTML/CSS) e rotas Flask.
+* **Rafael:** Integração com Power BI e criação dos dashboards analíticos.
+* **Luana:** Documentação técnica, prototipagem de Machine Learning e organização do repositório.
+
+---
+
+## 14. Ambiente e Tecnologias
+* **Linguagem:** Python 3.10+
+* **Framework Web:** Flask ou FastAPI.
+* **Manipulação de Dados:** Pandas / NumPy.
+* **Banco de Dados:** SQLite.
 * **Visualização:** Power BI Desktop.
-* **IDE Sugerida:** Visual Studio Code (VS Code).
-
----
-
-## Fluxo de Informações
-
-O projeto segue o seguinte fluxo de dados:
-
-1.  **Extração:** O script Python (executado por Pedro) faz uma requisição `GET` para a API de futebol e recebe um arquivo JSON.
-2.  **Carga (Load):** O módulo de integração (desenvolvido por Eduardo) lê o JSON, filtra os dados necessários e os insere no banco de dados SQLite.
-3.  **Exposição Web:** O servidor Flask (Vinícius) consulta o banco de dados e renderiza as informações em tabelas HTML para o usuário.
-4.  **Análise BI:** O Power BI (Rafael) conecta-se ao banco de dados SQLite ou consome um export `CSV/JSON` gerado pelo Python para montar os gráficos de desempenho.
-
----
-
-## Estrutura de Pastas Sugerida
-
-```text
-/projeto-rad
-├── /api
-│   └── api_consumer.py    # Script de conexão com a API
-├── /database
-│   ├── schema.sql         # Script de criação das tabelas
-│   └── futebol.db         # Arquivo do banco de dados SQLite
-├── /web
-│   ├── /static            # Arquivos CSS e Imagens
-│   ├── /templates         # Arquivos HTML (index.html, etc)
-│   └── app.py             # Servidor Flask
-├── /powerbi
-│   └── dashboard_futebol.pbix # Arquivo do Power BI
-├── requirements.txt       # Bibliotecas necessárias (pip install)
-└── main.py                # Ponto de entrada para atualizar os dados
+* **IDE:** VS Code.
