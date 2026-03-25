@@ -5,7 +5,7 @@ Este projeto foi desenvolvido como parte da disciplina de **Desenvolvimento Ráp
 
 ---
 
-## ⚽ Tema do Projeto
+## Tema do Projeto
 
 **Análise de dados de uma API pública de Futebol (Placar, Ranking de times), integrada a um banco de dados e exibida em Power BI.**
 
@@ -13,7 +13,7 @@ O sistema realiza o consumo de dados esportivos em tempo real, processa essas in
 
 ---
 
-## 📝 Justificativa do Tema
+## Justificativa do Tema
 
 A escolha do tema "Futebol" deve-se à alta disponibilidade de dados dinâmicos e à complexidade inerente à atualização constante de tabelas e placares, o que representa um excelente cenário para o uso de metodologias RAD. 
 
@@ -24,7 +24,7 @@ A escolha do tema "Futebol" deve-se à alta disponibilidade de dados dinâmicos 
 
 ---
 
-## 🎯 Objetivos do Projeto
+## Objetivos do Projeto
 
 1.  **Integração de Dados:** Consumir dados de uma API pública e persistir as informações relevantes em um banco de dados relacional.
 2.  **Visualização Web:** Criar uma interface básica para consulta rápida de rankings e placares diretamente do banco de dados.
@@ -33,7 +33,7 @@ A escolha do tema "Futebol" deve-se à alta disponibilidade de dados dinâmicos 
 
 ---
 
-## 👥 Divisão de Tarefas
+## Divisão de Tarefas
 
 A equipe distribuiu as responsabilidades de forma a cobrir todas as camadas da aplicação:
 
@@ -45,7 +45,7 @@ A equipe distribuiu as responsabilidades de forma a cobrir todas as camadas da a
 
 ---
 
-## 🛠 Ambiente e Tecnologias
+## Ambiente e Tecnologias
 
 * **Linguagem:** [Python 3.10+](https://www.python.org/)
 * **Framework Web:** [Flask](https://flask.palletsprojects.com/) (Back-end leve e rápido).
@@ -56,7 +56,7 @@ A equipe distribuiu as responsabilidades de forma a cobrir todas as camadas da a
 
 ---
 
-## 🔄 Fluxo de Informações
+## Fluxo de Informações
 
 O projeto segue o seguinte fluxo de dados:
 
@@ -67,7 +67,7 @@ O projeto segue o seguinte fluxo de dados:
 
 ---
 
-## 📂 Estrutura de Pastas Sugerida
+## Estrutura de Pastas Sugerida
 
 ```text
 /projeto-rad
