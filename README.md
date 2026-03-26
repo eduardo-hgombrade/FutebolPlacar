@@ -79,7 +79,7 @@ A análise de dados esportivos é uma área em constante crescimento, sendo esse
 * Processamento rápido dos cálculos estatísticos.
 * Sistema confiável e com validação de dados de entrada.
 * Escalabilidade para suportar futuras ligas de futebol.
-
+* Será feita a criação de um banco de dados.
 ---
 
 ## 9. Stakeholders (Partes Interessadas)
