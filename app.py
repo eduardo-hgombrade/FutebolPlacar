@@ -1,23 +1,34 @@
 # app.py
 from flask import Flask, render_template, request
 import pandas as pd
+import sqlite3 # <-- Nova importação
 from models.predictor import prever_resultado_poisson
 
 app = Flask(__name__)
 
-# Carregamos os dados de forma global na inicialização do servidor.
-# Isso evita ler o CSV do disco a cada requisição, deixando o sistema muito mais rápido.
+# --- NOVA INTEGRAÇÃO COM O BANCO DE DADOS SQLITE ---
 try:
-    df_futebol = pd.read_csv('dados_tratados.csv')
-    # Extraímos a lista de times únicos para preencher os 'selects' do HTML automaticamente
+    # 1. Abre a conexão com o banco de dados
+    conn = sqlite3.connect('database/futebolplacar.db', check_same_thread=False)
+    
+    # 2. Faz uma Query SQL para puxar os dados usando o pandas
+    df_futebol = pd.read_sql_query('SELECT * FROM partidas', conn)
+    
+    # 3. Extrai a lista de times únicos para o HTML
     times_disponiveis = sorted(list(set(df_futebol['HomeTeam'].unique()) | set(df_futebol['AwayTeam'].unique())))
-except FileNotFoundError:
+    
+    # 4. Fecha a conexão
+    conn.close()
+    
+except sqlite3.OperationalError:
     df_futebol = pd.DataFrame()
     times_disponiveis = []
-    print("Aviso: 'dados_tratados.csv' não encontrado. Certifique-se de gerá-lo primeiro.")
+    print("Aviso: Banco de dados não encontrado. Rode o script setup_db.py primeiro.")
+# ---------------------------------------------------
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
+# ... (O restante do seu código da rota continua exatamente igual)
     """
     Rota principal. Se for GET, apenas mostra a tela. 
     Se for POST, o usuário enviou o formulário e calculamos a previsão.
