@@ -1,5 +1,5 @@
 # app.py
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 import pandas as pd
 import sqlite3 # <-- Nova importação
 from models.predictor import prever_resultado_poisson
@@ -28,7 +28,6 @@ except sqlite3.OperationalError:
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-# ... (O restante do seu código da rota continua exatamente igual)
     """
     Rota principal. Se for GET, apenas mostra a tela. 
     Se for POST, o usuário enviou o formulário e calculamos a previsão.
@@ -60,6 +59,27 @@ def index():
                            erro=erro,
                            time_casa=time_casa_selecionado,
                            time_fora=time_fora_selecionado)
+
+
+# --- ROTA DA API PARA O POWER BI ---
+@app.route('/api/estatisticas', methods=['GET'])
+def api_estatisticas():
+    """
+    Endpoint para o Power BI consumir os dados da base de dados.
+    """
+    try:
+        # Liga à base de dados SQLite
+        conn = sqlite3.connect('database/futebolplacar.db', check_same_thread=False)
+        df_api = pd.read_sql_query('SELECT * FROM partidas', conn)
+        conn.close()
+        
+        # Converte o DataFrame para um formato JSON (que o Power BI consegue ler da Web)
+        return jsonify(df_api.to_dict(orient='records'))
+        
+    except Exception as e:
+        return jsonify({"erro": f"Erro na base de dados: {str(e)}"}), 500
+# -----------------------------------
+
 
 if __name__ == '__main__':
     # Rodamos o servidor no modo debug para facilitar o desenvolvimento
