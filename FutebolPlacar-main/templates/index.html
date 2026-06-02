@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FutebolPlacar - Previsão de Resultados</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h1>⚽ FutebolPlacar</h1>
+    <p style="text-align: center;">Sistema de Previsão Estatística da Premier League</p>
+
+    <!-- Botão para ir às estatísticas -->
+    <div style="text-align: center; margin-bottom: 25px;">
+        <a href="/estatisticas" class="btn-stats">📊 Ver Estatísticas por Time</a>
+    </div>
+
+    {% if erro %}
+        <div class="alert">{{ erro }}</div>
+    {% endif %}
+
+    <form method="POST" action="/">
+        <div class="form-group">
+            <label for="time_casa">🏠 Time Mandante (Casa):</label>
+            <select name="time_casa" id="time_casa" required>
+                <option value="">-- Selecione o time --</option>
+                {% for time in times %}
+                    <option value="{{ time }}" {% if time == time_casa %}selected{% endif %}>{{ time }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="time_fora">✈️ Time Visitante (Fora):</label>
+            <select name="time_fora" id="time_fora" required>
+                <option value="">-- Selecione o time --</option>
+                {% for time in times %}
+                    <option value="{{ time }}" {% if time == time_fora %}selected{% endif %}>{{ time }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <button type="submit">Calcular Probabilidades</button>
+    </form>
+
+    {% if resultado %}
+    <div class="resultado-box">
+        <h2>📊 Previsão do Confronto</h2>
+        <p><strong>{{ time_casa }}</strong> vs <strong>{{ time_fora }}</strong></p>
+
+        <div class="probabilidades">
+            <div class="prob-item">
+                <h3>Vitória (Casa)</h3>
+                <p>{{ resultado.vitoria_casa }}%</p>
+            </div>
+            <div class="prob-item">
+                <h3>Empate</h3>
+                <p>{{ resultado.empate }}%</p>
+            </div>
+            <div class="prob-item">
+                <h3>Vitória (Fora)</h3>
+                <p>{{ resultado.vitoria_fora }}%</p>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+</div>
+
+</body>
+</html>
