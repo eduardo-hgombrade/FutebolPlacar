@@ -23,6 +23,10 @@ except sqlite3.OperationalError:
 # --- ROTA PRINCIPAL (igual ao original) ---
 @app.route('/', methods=['GET', 'POST'])
 def index():
+    """
+    Rota principal. Se for GET, apenas mostra a tela. 
+    Se for POST, o usuário enviou o formulário e calculamos a previsão.
+    """
     resultado = None
     erro = None
     time_casa_selecionado = ""
@@ -112,16 +116,24 @@ def estatisticas():
                            ultimos_jogos=ultimos_jogos)
 
 
-# --- API PARA O POWER BI (igual ao original) ---
+# --- ROTA DA API PARA O POWER BI ---
 @app.route('/api/estatisticas', methods=['GET'])
 def api_estatisticas():
+    """
+    Endpoint para o Power BI consumir os dados da base de dados.
+    """
     try:
+        # Liga à base de dados SQLite
         conn = sqlite3.connect('database/futebolplacar.db', check_same_thread=False)
         df_api = pd.read_sql_query('SELECT * FROM partidas', conn)
         conn.close()
+        
+        # Converte o DataFrame para um formato JSON (que o Power BI consegue ler da Web)
         return jsonify(df_api.to_dict(orient='records'))
+        
     except Exception as e:
         return jsonify({"erro": f"Erro na base de dados: {str(e)}"}), 500
+# -----------------------------------
 
 
 if __name__ == '__main__':
